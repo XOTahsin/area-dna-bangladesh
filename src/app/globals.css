@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — source: DESIGN_SYSTEM.md §4 (proposed values, to be tuned).
+ * Raw values live here only. Components use the Tailwind names below
+ * (bg-canvas, text-ink, border-line, bg-brand …), never hex values.
+ */
+:root {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --ink-muted: #5c6860;
+  --border: #e6e1d8;
+  --brand: #0f6b4f;
+  --brand-soft: #e3f1ea;
+  --brand-strong: #0c5a43;
+  --accent: #d9583b;
+  --warn: #b7791f;
+  --warn-soft: #fbf0dc;
+  --warn-ink: #7a5212;
+  --danger: #b3261e;
+}
+
+@theme inline {
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-strong: var(--brand-strong);
+  --color-accent: var(--accent);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-warn-ink: var(--warn-ink);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-bangla), "Noto Sans Bengali", "Kalpurush", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem; /* 16px minimum on mobile */
+  line-height: 1.7; /* Bangla body: 1.6–1.7 */
+}
+
+/* Bangla headings need less leading than body but more than Latin */
+h1,
+h2,
+h3 {
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
